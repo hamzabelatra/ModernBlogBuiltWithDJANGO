@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title%}
+Edit Profile
+{% endblock %}
+{% block content%}
+
+ {% if  user.is_authenticated %}
+<h1> Update Profile</h1>
+
+<div class="form-group">
+    <form method="POST">
+        {% csrf_token %}
+
+        {{form.as_p}}
+        <p> Click <a href="{% url 'change-password' %}"> here </a> to Change your password</p>
+        <br />
+        <button class="btn btn-secondary"> Update profile </button>
+        
+
+    </form>
+</div>
+
+{% else %}
+
+<h1> You are not authenticated, click <a href="{% url 'login' %}"> here </a> to login</h1>
+{%endif%}
+{% endblock %}
